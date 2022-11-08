@@ -39,5 +39,6 @@ class TestSeek(unittest.TestCase):
         res = BaseLinerSearch.base_search(**params)
         assert res == 3
 
+
 if __name__ == '__main__':
     unittest.main()

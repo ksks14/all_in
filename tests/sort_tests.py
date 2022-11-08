@@ -6,7 +6,7 @@
 2022/11/9 4:04   lbs      1.0         None
 """
 import unittest
-from SortUtils.BaseSort import BaseBubbleSort
+from SortUtils.BaseSort import BaseBubbleSort, SelectSort
 
 
 class TestSort(unittest.TestCase):
@@ -28,6 +28,27 @@ class TestSort(unittest.TestCase):
             'flag': False
         }
         res = BaseBubbleSort.a_line_sort(**params)
+        res.reverse()
+        assert res == [1, 9, 14, 17, 26, 35]
+
+    @classmethod
+    def test_select_sort(cls):
+        """
+
+        :return:
+        """
+        params = {
+            'line': [1, 9, 35, 26, 14, 17],
+            'flag': True
+        }
+        res = SelectSort.a_line_sort(**params)
+        assert res == [1, 9, 14, 17, 26, 35]
+
+        params = {
+            'line': [1, 9, 35, 26, 14, 17],
+            'flag': False
+        }
+        res = SelectSort.a_line_sort(**params)
         res.reverse()
         assert res == [1, 9, 14, 17, 26, 35]
 
