@@ -5,8 +5,10 @@
 ------------      -------    --------    -----------
 2022/11/9 2:59   lbs      1.0         None
 """
+import time
 import unittest
-from seek.base_binary_search import BaseBinarySearch
+from SeekUtils.base_binary_search import BaseBinarySearch
+from SeekUtils.base_liner_seek import BaseLinerSearch
 
 
 class TestSeek(unittest.TestCase):
@@ -24,6 +26,18 @@ class TestSeek(unittest.TestCase):
         res = BaseBinarySearch.base_search(**params)
         assert res == 2
 
+    @classmethod
+    def test_aline_liner(cls):
+        """
+
+        :return:
+        """
+        params = {
+            'Line': [1, 2, 6, 9, 25],
+            'val': 9
+        }
+        res = BaseLinerSearch.base_search(**params)
+        assert res == 3
 
 if __name__ == '__main__':
     unittest.main()
