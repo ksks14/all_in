@@ -5,11 +5,13 @@
 ------------      -------    --------    -----------
 2022/11/9 3:54   lbs      1.0         None
 """
+import copy
+
 """
 该文件包含
 1. 冒泡排序 每一趟可以把最大的挪到顶端
 2. 选择排序 剔除掉冒泡排序中无用的排序
-3. 插入排序
+3. 插入排序 每一次排序都插入到对应的位置
 """
 from TimeUtils.code_time import get_process_time
 
@@ -40,7 +42,6 @@ class BaseBubbleSort:
                         exchange = True
             if not exchange:
                 break
-        return line
 
 
 class SelectSort:
@@ -69,6 +70,29 @@ class SelectSort:
                         flag_index = j
             if flag_index != i:
                 line[flag_index], line[i] = line[i], line[flag_index]
-        return line
 
 
+class InsertSort:
+    def __init__(self):
+        pass
+
+    @classmethod
+    @get_process_time
+    def a_line_sort(cls, line: list, flag: bool):
+        """
+
+        :param line:
+        :param flag:
+        :return:
+        """
+        for i in range(1, len(line)):
+            temp = line[i]
+            j = i - 1
+            while j >= 0:
+                if flag and line[j] > temp:
+                    line[j + 1] = line[j]
+                    j -= 1
+                elif not flag and line[j] < temp:
+                    line[j + 1] = line[j]
+                    j -= 1
+            line[j + 1] = temp
